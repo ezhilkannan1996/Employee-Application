@@ -1,0 +1,42 @@
+﻿@model EmployeeApp.Models.EmpData
+
+<div class="row">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+                   <div class="form-group col-md-4">@Html.Label("Employee ID")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Id)</div>
+                   <br />  
+                    
+                   <div class="form-group col-md-4">@Html.Label("Name")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Name)</div>
+                   <br />
+
+                   <div class="form-group col-md-4">@Html.Label("Gender")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Gender)</div>
+                   <br />
+
+                   <div class="form-group col-md-4">@Html.Label("Designation")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Designation)</div>
+                   <br />
+                   
+                   <div class="form-group col-md-4">@Html.Label("E-mail")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.MailID)</div>
+                   <br />
+
+                   <div class="form-group col-md-4">@Html.Label("MobileNumber")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.MobileNumber)</div>
+                   <br />
+                   <br />
+
+                   <p class="form-group"><i class='fas fa-laptop-code' style='font-size:24px'></i> Programming skills :</p>
+
+                   <div class="form-group col-md-4">@Html.Label("C")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.C)</div>
+                   <br />  
+                     
+                   <div class="form-group col-md-4">@Html.Label("Oops")</div>
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Oops)</div>
+                   <br />   
+                     
+                   <div class="form-group col-md-4">@Html.Label("Java")</div> 
+                   <div class="col-md-6">: @Html.DisplayFor(m=>m.Java)</div>
+</div>

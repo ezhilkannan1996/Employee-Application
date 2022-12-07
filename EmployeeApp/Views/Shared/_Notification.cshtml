@@ -1,0 +1,31 @@
+﻿@if(TempData["Create"]!=null)
+{ 
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript">
+       toastr.success('@TempData["Create"]');
+    </script>
+
+	@*<div class="alert alert-dismissible alert-primary">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Alert! </strong>@TempData["Create"]
+    </div>*@
+}
+
+@if(TempData["Edit"]!=null)
+{ 
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript">
+       toastr.success('@TempData["Edit"]');
+    </script>
+}
+
+@if(TempData["AlertMessage"]!=null)
+{ 
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript">
+       toastr.success('@TempData["AlertMessage"]');
+    </script>
+}

@@ -1,0 +1,72 @@
+﻿@model EmployeeApp.Models.EmpData
+
+@{
+	ViewData["Title"]="Employee Create";
+}
+
+<h1>Create</h1>
+
+<hr />
+@using (@Html.BeginForm("Create","Employee",FormMethod.Post))
+    {
+<div class="row">
+    <div class="col-md-6">
+            <br />           
+            <div class="form-group">
+                @Html.LabelFor(m=>m.Name)
+                @Html.TextBoxFor(m=>m.Name,new{placeholder="Enter the Name",@class="form-control",style="color:blue"}) 
+                @Html.ValidationMessageFor(m=>m.Name,"",new{@class="text-danger"})
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(m=>m.Gender)
+                @Html.RadioButtonFor(m => m.Gender, "Male",new{@class="form-check-input"})Male
+                @Html.RadioButtonFor(m => m.Gender, "Female",new{@class="form-check-input"})Female
+                @Html.RadioButtonFor(m => m.Gender, "Others",new{@class="form-check-input"})Others
+                @Html.ValidationMessageFor(m=>m.Gender,"",new{@class="text-danger"})
+            </div>
+             <br />
+            <div class="form-group>
+                @Html.LabelFor(m=>m.Designation)
+                @Html.DropDownListFor(m=>m.Designation,(IEnumerable<SelectListItem>)ViewBag.Designa,new{@class="form-control"})
+                @Html.ValidationMessageFor(m=>m.Designation,"",new{@class="text-danger"})
+            </div>
+            <br />
+            <div class="form-group">
+               @Html.LabelFor(m=>m.MailID)
+               @Html.TextBoxFor(m=>m.MailID,new{placeholder="Enter the Mail ID",@class="form-control",style="color:blue"})
+               @Html.ValidationMessageFor(m=>m.MailID,"",new{@class="text-danger"})
+            </div>
+            <br />
+            <div class="form-group">
+               @Html.LabelFor(m=>m.MobileNumber)
+               @Html.TextBoxFor(m=>m.MobileNumber,new{placeholder="Enter the Mobile Number",@class="form-control",style="color:blue"})
+               @Html.ValidationMessageFor(m=>m.MobileNumber,"",new{@class="text-danger"})
+            </div>
+            <br />
+            <div>
+                 @Html.Label("Programming SKills")
+            </div>
+            <div class="form-group">
+               @Html.LabelFor(m=>m.C,"C")
+               @Html.CheckBoxFor(m=>m.C,new{@class="form-check-input"})
+               @Html.LabelFor(m=>m.Oops,"Oops")
+               @Html.CheckBoxFor(m=>m.Oops,new{@class="form-check-input"})
+               @Html.LabelFor(m=>m.Java,"Java")
+               @Html.CheckBoxFor(m=>m.Java,new{@class="form-check-input"})
+            </div>
+             <br />
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+}
+@section Scripts 
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

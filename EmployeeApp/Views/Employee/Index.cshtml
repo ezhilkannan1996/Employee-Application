@@ -1,0 +1,136 @@
+﻿@model IEnumerable<EmployeeApp.Models.EmpData>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee List</h1>
+
+<p>
+    <a asp-controller="Employee" asp-action="Create">Create New</a>
+</p>
+
+<table class="table" id="EmpGrid">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oops)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Java)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem  => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.MailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.C)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.Oops)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem  => item.Java)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>Edit</a> 
+                <a class="details btn btn-primary btn-sm" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="bi bi-eye"></i>View</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary btn-sm"><i class="bi bi-trash"></i>Delete</a> 
+            </td>           
+        </tr>
+}
+    </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Employee Details</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#EmpGrid .details").click(function () {
+                var Id = $(this).closest("tr").find("td").eq(0).html().trim();
+                $.ajax({
+                    type: "POST",
+                    url: "/Employee/Details",
+                    data: { id: Id },
+                    success: function (response) {
+                        $("#myModal").find(".modal-body").html(response);
+                        $("#myModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+@*<div>Employee Count By ViewBag= @ViewBag.Employee </div>
+<div>Tempdata through ViewData= @ViewData["ViewData"]</div>
+<div>SessionData through ViewData= @ViewBag.SessinData</div>*@
+
