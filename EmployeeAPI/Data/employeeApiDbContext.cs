@@ -10,6 +10,6 @@ namespace EmployeeAPI.Data
 
         }
 
-        public DbSet<EmpData> Emps { get; set; }
+        public DbSet<EmpData> Emp { get; set; }
     }
 }
