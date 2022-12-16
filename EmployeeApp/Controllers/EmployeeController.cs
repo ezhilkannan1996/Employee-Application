@@ -1,5 +1,6 @@
 ﻿using EmployeeApp.Helper;
 using EmployeeApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace EmployeeApp.Controllers
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         EmployeeAPI _api = new EmployeeAPI();
