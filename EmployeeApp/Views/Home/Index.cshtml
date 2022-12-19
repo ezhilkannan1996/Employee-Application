@@ -5,28 +5,3 @@
 <div class="text-center">
     <h2 class="display-4">Welcome To Employee Application</h2>
 </div>
-
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <form asp-controller="Access" asp-action="Login" method="post">
-  <h1>Login</h1>
-  <input type="email" placeholder="Email Address" />
-  <input type="password" placeholder="Password" />
-  <label>
-      <input type="checkbox" />Keep Me Logged In. 
-  </label>
-  <button type="submit">Login</button>
-  @if(ViewData["ValidateMessage"]!=null)
-        {
-             <br />
-             <br />
-             <label>@ViewData["ValidateMessage"]</label>
-        }
-    </form>
-</body>
-</html>

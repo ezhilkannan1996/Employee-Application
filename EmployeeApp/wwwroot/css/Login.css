@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html, body {
+    /*background-color:black;*/
     background-image: url('https://wallpaperaccess.com/full/173854.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,7 +15,7 @@ html, body {
     height: 100%;
     align-content: center;
     position: relative;
-    top: 106px;
+    top: 0px;
 }
 
 .card {
@@ -87,3 +88,7 @@ input:focus {
     .links a {
         margin-left: 4px;
     }
+
+.border-top {
+    border: 1px solid #282828
+}
