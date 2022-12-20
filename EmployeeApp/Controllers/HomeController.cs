@@ -28,19 +28,19 @@ namespace EmployeeApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserData LogCred)
         {
-            List<UserData> Users=new List<UserData>();
+            UserData _User=new UserData();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync("api/UserDatas");
+            string api = "api/UserDatas/" + LogCred.Email;
+            HttpResponseMessage res = await client.GetAsync(api);
             if (res.IsSuccessStatusCode)
             {
                 var results= res.Content.ReadAsStringAsync().Result;
-                Users = JsonConvert.DeserializeObject<List<UserData>>(results);
-                foreach (var item in Users)
-                {
-                    if(LogCred.Email==item.Email && LogCred.Password == item.Password)
+                _User = JsonConvert.DeserializeObject<UserData>(results);
+                
+                    if(LogCred.Email == _User.Email && LogCred.Password == _User.Password)
                     {
-                        List<Claim> claims = new List<Claim>()
-                {
+                            List<Claim> claims = new List<Claim>()
+                    {
                 new Claim(ClaimTypes.NameIdentifier,LogCred.Email),
                 new Claim("OtherProperties","Example Role")
                 };
@@ -55,26 +55,6 @@ namespace EmployeeApp.Controllers
                             new ClaimsPrincipal(identity), properties);
                         return RedirectToAction("Index", "Employee");
                     }
-                }
-
-                //if (LogCred.Email == Users[0].Email && LogCred.Password == Users[0].Password)
-                //{
-                //    List<Claim> claims = new List<Claim>()
-                //{
-                //new Claim(ClaimTypes.NameIdentifier,LogCred.Email),
-                //new Claim("OtherProperties","Example Role")
-                //};
-                //    ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                //    AuthenticationProperties properties = new AuthenticationProperties()
-                //    {
-                //        AllowRefresh = true,
-                //        IsPersistent = LogCred.KeepLoggedIn
-                //    };
-
-                //    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                //        new ClaimsPrincipal(identity), properties);
-                //    return RedirectToAction("Index", "Employee");
-                //}
             }
 
             

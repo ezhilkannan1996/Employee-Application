@@ -31,7 +31,7 @@ namespace EmployeeAPI.Controllers
         [HttpGet("{email}")]
         public async Task<ActionResult<UserData>> GetUserData(string email)
         {
-            var userData = await _context.UserData.FindAsync(email);
+            var userData = await _context.UserData.Where(a => a.Email == email).FirstOrDefaultAsync();//.ToListAsync();
 
             if (userData == null)
             {
