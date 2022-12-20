@@ -21,7 +21,7 @@ namespace EmployeeApp.Controllers
         {
             ClaimsPrincipal claimuser = HttpContext.User;
             if (claimuser.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -67,6 +67,12 @@ namespace EmployeeApp.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
         }
     }
 }
