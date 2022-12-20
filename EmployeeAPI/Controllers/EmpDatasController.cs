@@ -11,9 +11,9 @@ namespace EmployeeAPI.Controllers
     {
         private readonly IEmployee _IContext;
 
-        private readonly employeeApiDbContext _context;
+        private readonly EmployeeDataContext _context;
 
-        public EmpDatasController(employeeApiDbContext context,IEmployee IContext)
+        public EmpDatasController(EmployeeDataContext context,IEmployee IContext)
         {
             _context = context;
             _IContext = IContext;

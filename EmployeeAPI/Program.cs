@@ -1,4 +1,4 @@
-using EmployeeAPI.Data;
+﻿using EmployeeAPI.Data;
 using EmployeeAPI.Interfaces;
 using EmployeeAPI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +6,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<UserDataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("UserDataContext") ?? throw new InvalidOperationException("Connection string 'UserDataContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddTransient<IEmployee, EmployeeServices>();
@@ -18,7 +20,7 @@ builder.Services.AddSwaggerGen();
 
 //builder.Services.AddDbContext<employeeApiDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDbContext<employeeApiDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeAPIContext")));
+builder.Services.AddDbContext<EmployeeDataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeAPIContext")));
 
 var app = builder.Build();
 

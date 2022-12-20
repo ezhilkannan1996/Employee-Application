@@ -6,8 +6,8 @@ namespace EmployeeAPI.Services
 {
     public class EmployeeServices : IEmployee
     {
-        public readonly employeeApiDbContext _context;
-        public EmployeeServices(employeeApiDbContext context)
+        public readonly EmployeeDataContext _context;
+        public EmployeeServices(EmployeeDataContext context)
         {
             _context = context;
         }
