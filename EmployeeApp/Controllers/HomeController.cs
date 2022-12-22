@@ -28,18 +28,20 @@ namespace EmployeeApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(UserData LogCred)
         {
-            UserData _User=new UserData();
-            HttpClient client = _api.Initial();
-            string api = "api/UserDatas/" + LogCred.Email;
-            HttpResponseMessage res = await client.GetAsync(api);
-            if (res.IsSuccessStatusCode)
+            if (LogCred.Email !=null)
             {
-                var results= res.Content.ReadAsStringAsync().Result;
-                _User = JsonConvert.DeserializeObject<UserData>(results);
-                
-                    if(LogCred.Email == _User.Email && LogCred.Password == _User.Password)
+                UserData _User = new UserData();
+                HttpClient client = _api.Initial();
+                string api = "api/UserDatas/" + LogCred.Email;
+                HttpResponseMessage res = await client.GetAsync(api);
+                if (res.IsSuccessStatusCode)
+                {
+                    var results = res.Content.ReadAsStringAsync().Result;
+                    _User = JsonConvert.DeserializeObject<UserData>(results);
+
+                    if (LogCred.Email == _User.Email && LogCred.Password == _User.Password)
                     {
-                            List<Claim> claims = new List<Claim>()
+                        List<Claim> claims = new List<Claim>()
                     {
                 new Claim(ClaimTypes.NameIdentifier,LogCred.Email),
                 new Claim("OtherProperties","Example Role")
@@ -55,10 +57,17 @@ namespace EmployeeApp.Controllers
                             new ClaimsPrincipal(identity), properties);
                         return RedirectToAction("Index", "Employee");
                     }
+                    else
+                    {
+                        TempData["LoginError"] = "Login failed";
+                    }
+                }
+            }
+            else
+            {
+                TempData["LoginWarning"] = "Enter Email & Password";
             }
 
-            
-            ViewData["ValidateMessage"] = "User not found";
             return View();
         }
 

@@ -9,63 +9,65 @@
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/Login1.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+<link href="/css/Login2.css" rel="stylesheet" id="bootstrap-css" />
+<link rel="stylesheet" href="/css/Login.css" />
 
-<link rel="stylesheet" href="/css/Login1.css"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-<link href="/css/Login2.css" rel="stylesheet" id="bootstrap-css"/>
-<link rel="stylesheet" href="/css/Login.css"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
 <html>
 <head>
-	<title>Login Page</title>   
+    <title>Login Page</title>
 </head>
 <body>
-	<form asp-controller="Home" asp-action="Login" method="post">
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
-				</div>
-			</div>
-			<div class="card-body">
-				<form>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input type="email" placeholder="Email Address" asp-for="Email" class="form-control" p>
-						
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input type="password" placeholder="Password" asp-for="Password" class="form-control">
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox" asp-for="KeepLoggedIn">Keep Me Logged In.
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
-					</div>
-				</form>
-			</div>
-			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Don't have an account?<a asp-controller="Home" asp-action="Register">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</form>
+    <partial name="_Notification" />
+    <form asp-controller="Home" asp-action="Login" method="post">
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Sign In</h3>
+                        <div class="d-flex justify-content-end social_icon">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="email" placeholder="Email Address" asp-for="Email" class="form-control" p>
+
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" placeholder="Password" asp-for="Password" class="form-control">
+                            </div>
+                            <div class="row align-items-center remember">
+                                <input type="checkbox" asp-for="KeepLoggedIn">Keep Me Logged In.
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn float-right login_btn">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a asp-controller="Home" asp-action="Register">Sign Up</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
