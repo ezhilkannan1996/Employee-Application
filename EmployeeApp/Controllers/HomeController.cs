@@ -20,8 +20,10 @@ namespace EmployeeApp.Controllers
         public IActionResult Login()
         {
             ClaimsPrincipal claimuser = HttpContext.User;
+            
             if (claimuser.Identity.IsAuthenticated)
             return RedirectToAction("Index", "Home");
+            
             return View();
         }
 
@@ -68,7 +70,7 @@ namespace EmployeeApp.Controllers
                 TempData["LoginWarning"] = "Enter Email & Password";
             }
 
-            return View();
+            return RedirectToAction("Login", "Home");
         }
 
 

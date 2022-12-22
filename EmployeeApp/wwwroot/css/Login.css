@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html, body {
-    /*background-color:black;*/
-    background-image: url('https://wallpaperaccess.com/full/173854.jpg');
+    background-color:black;
+    /*background-image: url('https://wallpaperaccess.com/full/173854.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -23,7 +23,8 @@ html, body {
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
+    /*background-color: rgba(0,0,0,0.5) !important;*/
+    background-color: rgba(37, 35, 36,0.5) !important;
 }
 
 .social_icon span {
