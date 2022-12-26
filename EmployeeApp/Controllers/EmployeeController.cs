@@ -51,9 +51,9 @@ namespace EmployeeApp.Controllers
                 return View("Create");
             }
 
-            HttpClient client=_api.Initial();
+            HttpClient client = _api.Initial();
 
-            var postTask = client.PostAsJsonAsync<EmpData>("api/EmpDatas",EmpObj);
+            var postTask = client.PostAsJsonAsync<EmpData>("api/EmpDatas", EmpObj);
             postTask.Wait();
 
             var result = postTask.Result;
@@ -85,7 +85,7 @@ namespace EmployeeApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(EmpData EmpObj,int id)
+        public IActionResult Edit(EmpData EmpObj, int id)
         {
             if (!ModelState.IsValid)
             {
@@ -130,7 +130,7 @@ namespace EmployeeApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var employee=new EmpData();
+            var employee = new EmpData();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.DeleteAsync($"api/EmpDatas/{id}");
 

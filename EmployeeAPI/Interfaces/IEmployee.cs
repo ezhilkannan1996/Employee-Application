@@ -8,6 +8,6 @@ namespace EmployeeAPI.Interfaces
         EmpData GetEmployee(int id);
         int AddEmployee(EmpData Obj);
         int UpdateEmployee(EmpData Obj);
-        int DeleteEmployee(int id);      
+        int DeleteEmployee(int id);
     }
 }

@@ -13,7 +13,7 @@ namespace EmployeeAPI.Controllers
 
         private readonly EmployeeDataContext _context;
 
-        public EmpDatasController(EmployeeDataContext context,IEmployee IContext)
+        public EmpDatasController(EmployeeDataContext context, IEmployee IContext)
         {
             _context = context;
             _IContext = IContext;

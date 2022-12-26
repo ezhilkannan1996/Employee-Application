@@ -20,17 +20,17 @@ namespace EmployeeApp.Controllers
         public IActionResult Login()
         {
             ClaimsPrincipal claimuser = HttpContext.User;
-            
+
             if (claimuser.Identity.IsAuthenticated)
-            return RedirectToAction("Index", "Home");
-            
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(UserData LogCred)
         {
-            if (LogCred.Email !=null)
+            if (LogCred.Email != null)
             {
                 UserData _User = new UserData();
                 HttpClient client = _api.Initial();
